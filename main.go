@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -38,7 +38,7 @@ func main() {
 	defer image.Body.Close()
 
 	// 画像ファイルのデータを全て読み込み
-	bytes, err := ioutil.ReadAll(image.Body)
+	bytes, err := io.ReadAll(image.Body)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
